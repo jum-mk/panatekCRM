@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>body{overflow-x:hidden;}</style>
+    <meta charset="UTF-8">
+    <title>Panatek</title>
+    {% include 'head.html' %}
+</head>
+
+<body style="background-color:#fafbff; font-family: 'Roboto', sans-serif;">
+
+{% include 'menu.html' %}
+
+{% if messages %}
+
+<div class="messages shadow">
+    {% for message in messages %}
+    <span style="margin-right:10px;">{{ message }}</span>
+    {% if request.user.is_authenticated %}
+
+    <button class="btn btn-sm  justify-content-center" style="background-color:transparent; ">
+        <i class="bi bi-person-fill" style="font-size:18px; color:white;"></i>
+       <a href="{% url 'profile' %}" style="text-decoration:none; color:white; font-weight:700;margin-top:-4px; "><span>Мој профил</span></a>
+    </button>
+    {% else %}
+    {%endif%}
+
+    {% endfor %}
+</div>
+{% endif %}
+
+{% include 'carousel2.html' %}
+
+
+{% include 'firstrow.html' %}
+
+
+{% include 'partners.html' %}
+
+
+
+<div class="container">
+    {% include 'paleta.html' %}
+</div>
+
+
+{% include 'imagescontent.html' %}
+
+
+
+{% include 'footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+    var x = $('.caption-holder')[0];
+    console.log(x);
+    $(x).css("transition","3s");
+    $(x).css("opacity","1");
+    function op(){
+        $(x).css("opacity","0.85");
+        $(x).css("border-radius","50px -100px");
+    }
+    setTimeout(op, 3000);
+
+    });
+
+  //x.classList.toggle('fade');
+</script>
+<script>
+    $(document).ready(function() {
+    var x = $('.caption-holder-2')[0];
+    console.log(x);
+    $(x).css("transition","3s");
+    $(x).css("opacity","1");
+    function op(){
+        $(x).css("opacity","0.75");
+        $(x).css("border-radius","50px -100px");
+    }
+    setTimeout(op, 3000);
+
+    });
+
+  //x.classList.toggle('fade');
+</script>
+<script>
+    $(document).ready(function() {
+    var x = $('.caption-holder-3')[0];
+    console.log(x);
+    $(x).css("transition","3s");
+    $(x).css("opacity","1");
+    function op(){
+        $(x).css("opacity","0.75");
+        $(x).css("border-radius","50px -100px");
+    }
+    setTimeout(op, 3000);
+
+    });
+
+  //x.classList.toggle('fade');
+</script>
+</body>
+
+
+
+</html>

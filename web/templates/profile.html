@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panatek</title>
+
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="{% static 'css/pstyle.css' %}" rel="stylesheet">
+    <style>
+    .nav-link:focus, .nav-link:hover {
+    color: #480610;
+        font-weight: 700;
+}
+     .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        color: var(--bs-nav-pills-link-active-color);
+        background: #a61a31;
+        font-weight: 700;
+    }
+    .nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #a61a31;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.bi {margin-right:10px;!important}
+
+.product-image{width:200px; margin-bottom:15px; align-self:center;}
+
+@media only screen and (min-width: 320px) and (max-width: 575px) {
+body{background-color:#f8f9fa00;}
+#box {padding: 0;}
+#box2 {padding: 0; !important}!important
+}
+
+
+
+    </style>
+
+</head>
+<body style="height:100%;  color:black; overflow-x:hidden; font-family: 'Roboto', sans-serif;     background: #f8f9fa;">
+<div class="container-fluid" style="height:100%;">
+    <div class="row" style="height:100%;">
+        <div id="box" class="col-sm-12 col-md-3 sidebar menu-sidebar">{% include 'sidebar.html' %}</div>
+        <div id="box2" class="col-md-9">{% include 'box.html' %}</div>
+    </div>
+</div>
+
+
+<script>
+    /* global bootstrap: false */
+(() => {
+  'use strict'
+  const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach(tooltipTriggerEl => {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Производи | {{name}} | {{brand}}</title>
+    {% include 'head.html' %}
+    <style>
+
+    </style>
+</head>
+<body>
+{% include 'menu.html' %}
+
+<div class="container">
+    <h1 style="text-align:center; margin-top:30px;; padding:10px;">
+        <span style="title-all">Брендови</span>
+    </h1>
+
+    <div class="smalldivider" style="margin-top:20px; margin-bottom:30px;"></div>
+    <div class="row p-2" id="brand-row">
+        {% for brand in brands %}
+        <div class="col-6 col-md-3 d-flex justify-content-center">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="width:250px; height:250px;">
+               <a href="{{brand.get_absolute_url}}"><img src="{{brand.img.url}}" class="brand-image-brand" style="cursor:pointer;"></a>
+                <h6 style="margin-top:15px; font-weight:300; text-align:left;">{{brand.name}}</h6>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

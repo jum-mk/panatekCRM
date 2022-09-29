@@ -1,0 +1,23 @@
+{% load static %}
+<div class="container">
+
+
+    <div id="partners" class="row  justify-content-center align-items-center p-4">
+        <h1 style="text-align:center; margin:0; padding:0;">
+
+            <span class="title-all">
+            Партнери
+            </span></h1>
+
+        <div class="smalldivider" style="margin-top:20px; margin-bottom:30px;"></div>
+{% for brand in brands %}
+        <div class="col-6 col-md-3 d-flex align-items-center justify-content-center"
+             style="padding:10px; height:150px;">
+            <a href="{{brand.brochure}}"><img src="{{brand.img.url}}" class="brand-image"></a>
+
+        </div>
+{% endfor %}
+        
+
+    </div>
+</div>

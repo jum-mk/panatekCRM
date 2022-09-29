@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="container">
+    <div class="row" style="    background: #f9fafe00;
+    border-radius: 5px;
+    padding-bottom: 30px;">
+        <div class="col-12 col-md-6 align-items-center justify-content-center d-flex" style="">
+            <div class="d-flex flex-column align-items-start justify-content-start"
+                 style="background:url({% static 'images/b1.webp' %}); height:210px; padding:20px; width:510px; margin-top:30px; border-radius: 10px;">
+                <h4 style=" font-weight:700;">КАТАЛОГ ОД СИТЕ <br>ДОБАВУВАЧИ</h4>
+                <span>Повеќе од 10 брендови.</span>
+                <a style="text-decoration:none; color:white;" href="{% url 'brands' %}">
+                    <button class="btn btn-danger" style="background:#9d001a; border-color:#9d001a; margin-top:30px;">
+                        Види повеќе
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 align-items-center justify-content-center d-flex">
+            <div class="d-flex flex-column align-items-start justify-content-start"
+                 style="background:url({% static 'images/b2.webp' %}); height:210px; padding:20px; width:510px; margin-top:30px; border-radius: 10px;">
+                <h4 style=" font-weight:700;">СЕРВИС И <br>РЕЗЕРВНИ ДЕЛОВИ</h4>
+                <span>Лесно достапен сервис.</span>
+                <button class="btn btn-danger" style="background:#9d001a; border-color:#9d001a; margin-top:30px;">Види
+                    повеќе
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

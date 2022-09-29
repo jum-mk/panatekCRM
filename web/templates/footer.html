@@ -1,0 +1,91 @@
+{% load static %}
+    <div id="footer" class="row d-flex justify-content-center"
+         style="padding: 20px;
+    background-color: #323232;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: white;
+    font-weight: 600;">
+        <div class="col-12 col-md-4 d-flex justify-content-center">
+            <div class="row widget-1" style="font-size:14px; font-weight:400; margin-top:15px;">
+                <img src="{% static 'images/brands/footer-logo.png' %}" style="width:175px; height:41px;">
+                <span style="margin-top:10px;">Адреса: Христо Татарчев 1 бр.107, </span>
+                <span>Скопје 1000 Македонија</span>
+                <span>Телефон: +389 71 257 778</span>
+                <span>Mail адреса: info@panatek.mk</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 f-col">
+            <div class="row widget-2" style="font-size:15px; font-weight:600; margin-top:15px;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="font-weight:900; font-size:20px; background:transparent;">Навигација</li>
+                    <li class="list-group-item dropdown" style="font-weight:500; background:transparent;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink3" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false" style="text-align:left;">
+                            Брендови
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink3">
+                            {% for brand in brands %}
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <div class="d-flex justify-content-start brand-name">
+                                        <span>{{brand.name}}</span>
+                                    </div>
+
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    <li class="list-group-item" style="font-weight:500; background:transparent;">Категории</li>
+                    <li class="list-group-item" style="font-weight:500; background:transparent;">Сервис и резервни делови</li>
+                    <li class="list-group-item" style="font-weight:500; background:transparent;">Контакт</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 d-flex justify-content-center   ">
+            <div class="widget-3" style="display: flex;
+    flex-direction: column;font-size:15px; font-weight:600; margin-top:15px; align-items:center;">
+                <div class="d-flex p-0" style="width:300px; height:38px; margin-top:30px;">
+                    <input type="email" class="form-control" placeholder="e-mail адреса" >
+                    <button class="btn p-btn" style="color: white;
+    font-weight: 600;
+    background: #505050;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: -5px;
+    border: 1px;
+	color: white;
+    
+">Информации</button>
+                </div>
+                 <div class="footer-social" style="max-height:30px; display:flex; margin-top:30px;">
+                   
+ <a href="https://www.facebook.com/Panatek-Dooel-104561765535260/"> <i style="color:white;" class="bi bi-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/panatek-dooel/">  <i style="color:white;" class="bi bi-linkedin"></i></a>
+                    <a href="https://www.instagram.com/panatekdooel/"> <i style="color:white;" class="bi bi-instagram"></i></a>
+                </div>
+
+<a href="https://drive.google.com/file/d/1HK8vhuJEcIiycSoPW6XTwPsHjxbGejMC/view"><button class="btn p-btn " style="font-weight: 600;
+    background: #505050; border-radius: 0px 5px 5px 0px;
+
+    font-weight: 600;
+    background: #505050;
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 30px;
+    align-items: center;
+    border-color: white;
+    color: white;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;">
+
+<i style="color:white;" class="bi bi-filetype-pdf"></i>
+Панатек брошура</button></a>
+
+
+            </div>
+        </div>
+    </div>

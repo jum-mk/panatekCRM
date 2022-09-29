@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{product.name}} | {{product.brand}} | {{product.category}}</title>
+    {% include 'head.html' %}
+</head>
+<body>
+{% include 'menu.html' %}
+<div class="container">
+    <div class="row p-2 mt-2">
+        <h1 style="margin:0; padding:0;">
+            <span class="title-all">{{product.name}}</span></h1>
+        <div class="smalldivider" style="margin-top:20px; margin-bottom:20px;"></div>
+
+        <div class="col-12 col-md-6 d-flex justify-content-center">
+            <div class="img-holder" style="max-width:450px;">
+                {% for p in product.get_images %}
+                <img class="border-sm single-product-image" src="{{p.img.url}}">
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-6 d-flex justify-content-center flex-column">
+
+
+            <h4>Краток опис</h4>
+
+            <p class="p-desc pt-2" style="max-width:675px; min-width:300px; border-top: 2px solid #f5e6e9 ">
+                {{product.short_description|safe}}</p>
+            <div class="d-flex justify-content-between align-items-center" style="margin:10px;">
+                <img src="{{product.brand.img.url}}" class="single-product-brand-image">
+                <a style="background:transparent; color:transparent;" href="{{product.pdf.url}}">
+                    <button class="d-flex btn btn-sm" style="
+
+    color: white;
+    font-weight: 700;
+    background: #a61a31;
+    border: 3px solid #ffffff;
+    /* width: 139px; */
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 9px;
+    box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+">Превземи PDF
+                    </button>
+                </a>
+            </div>
+            <div class="smalldivider" style="margin-top:30px; margin-bottom:30px; "></div>
+
+
+            {% for p in product.get_desc_images %}
+            <img class="border-sm single-product-image-2" src="{{p.img.url}}">
+            {% endfor %}
+            <div class="d-flex">
+                <div class="shadow d-flex align-items-center justify-content-center "
+                      style="background-color: #a61931;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 5px;
+    height: 100%;
+    margin-top: 4px;
+    color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 1000px 0px 1000px 0px;
+    border: 1px solid white;">{{product.category}}</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="row mb-4" style="padding-top:30px;">
+        <h1 style="text-align:center; margin:0; padding:0;">
+        <span class="title-all">Опис</span></h1>
+        <div class="smalldivider" style="margin-top:5px; margin-bottom:30px; "></div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col">
+                    {{product.description|safe}}
+                </div>
+                <div class="col-sm-12 col-md-6 d-flex flex-column align-items-center form-holder">
+                    <div class="container">
+                        <div class="row d-flex ">
+                            <div style=" height: 315px; float: none; clear: both; margin: 2px auto;">
+                                <embed
+                                        src="{{product.video}}"
+                                        wmode="transparent"
+                                        type="video/mp4"
+                                        width="100%" height="100%"
+                                        allow="autoplay; encrypted-media; picture-in-picture"
+                                        allowfullscreen
+                                        title="Keyboard Cat"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mb-4" style="padding-top:30px;">
+
+        <h1 style="text-align:center; margin:0; padding:0;">
+        <span class="title-all">Побарај понуда</span></h1>
+        <div class="smalldivider" style="margin-top:5px; margin-bottom:30px; "></div>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <form method="post" style="max-width:600px; align-items:center; display:flex; flex-direction:column;">
+                    {% csrf_token %}
+                    <input name="email" type="email" class="form-control mt-2 mb-2"
+                           style="min-width:320px; max-width:450px;"
+                           placeholder="E-mail адреса">
+                    <input name="product" type="text" class="form-control mt-2 mb-2" value="{{product.name}}"
+                           style="min-width:320px; max-width:450px;" disabled>
+
+                    <input name="message" type="text" class="form-control mt-2 mb-2"
+                           style="min-width:320px; max-width:450px; height:200px;" placeholder="Порака">
+                    <button type="submit"
+                            style="min-width:320px; max-width:450px; color:white; font-weight:600; background-color:#a61a31;"
+                            class="btn form-control mt-2 mb-2">Побарај понуда
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+
+</body>
+</html>

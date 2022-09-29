@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{brand.name}} производи</title>
+    {% include 'head.html' %}
+    <style>
+
+    </style>
+</head>
+<body>
+{% include 'menu.html' %}
+
+<div class="container">
+    <h1 style="text-align:center; margin-top:30px;; padding:10px;">
+        <span class="title-all">Категории | {{brand.name}}</span></h1>
+
+    <div class="smalldivider" style="margin-top:10px; margin-bottom:30px;"></div>
+    <div class="row " id="single-brand-row">
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <img class="brand-image" src="{{brand.img.url}}">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="p-2 shadow desc" style="
+
+                                                    border: 1px solid #00000021;
+                                                    border-radius: 8px;
+                                                    margin-top: 20px;
+                                                    margin-bottom: 20px;
+                                                    background: #50505012;
+                                                    color: #333333;
+                                                    font-weight: 700;
+                                                ">
+                    <h6 style="font-weight:500;">{{brand.desc}}</h6>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <ul class="list-group" style="width:300px;">
+                    {% for cat in cats %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a style="color: #141619; text-decoration: underline;" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+                        <a><span class="badge bg-danger rounded-pill">{{cat.get_product_count}}</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <h1 style="text-align:center; margin-top:30px;; padding:10px;">
+        <span class="title-all">Сите производи | {{brand.name}}</span></h1>
+    <div class="smalldivider" style="margin-top:10px; margin-bottom:20px;"></div>
+    <div class="row "
+         style="min-height:500px;">
+        {% for product in products %}
+        <div class="col-12 col-md-6 col-lg-4 col-xxl-3">
+            <div class="card shadow-sm" style="margin:20px;">
+
+
+                <div class="card-body d-flex flex-column">
+                    {% for p in product.get_images %}
+                    <img src="{{p.img.url}}" style=" width:200px; margin-bottom:15px; align-self:center;">
+                    {% endfor %}
+                    <h6>{{product.name}}</h6>
+                    <p class="card-text" style="line-height: 20px;">{{product.meta_description|slice:"120"}}...</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                                    <a style="text-decoration:none; border-radius:0px;"
+                                       href="{{product.get_absolute_url}}">
+                                        <button type="button" class="btn btn-sm btn-small" style="background: #a61a31;
+                                            color: white;
+                                            border-radius: 5px 0px 0px 5px;
+                                            font-weight: 600;">Детали
+                                        </button>
+                                    </a>
+                                    <a style="text-decoration:none; border-radius:0px;" href="{{product.pdf.url}}"
+                                       download="{{product.pdf.url}">
+
+                                        <button type="button" class="btn btn-sm btn-small" style="border-radius:0px 5px 5px 0px; border:1px solid grey; color: #3f3f3f; font-weight:600;">Брошура
+                                        </button>
+                                    </a>
+                                </div>
+                        <small style="color:#323232;" class="text-end"><b>{{product.brand.name}}</b></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

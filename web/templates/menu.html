@@ -1,0 +1,115 @@
+{% load static %}
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-md navbar-light  bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'images/brands/logo.png' %}" class="logo">
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+                <ul class="navbar-nav m-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Почетна</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Брендови
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                            {% for brand in brands %}
+                            <li>
+                                <a class="dropdown-item" href="{{brand.get_absolute_url}}">
+                                    <div class="d-flex justify-content-start">
+                                        <span>{{brand.name}}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown flex-column">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink2" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Категории
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink2">
+                            {% for cat in categories %}
+                            <li>
+                                <a class="dropdown-item" href="{{cat.get_absolute_url}}">
+                                    <div class="d-flex justify-content-start">
+                                        <span>{{cat.name}}</span>
+                                    </div>
+
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item d-sm-none d-xl-block">
+                        <a class="nav-link" href="#">Сервис и резервни делови</a>
+                    </li>
+                    <li class="nav-item d-sm-none d-xl-block">
+                        <a class="nav-link" href="{% url 'contact' %}">Контакт</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center justify-content-center">
+			 <a href="https://www.facebook.com/Panatek-Dooel-104561765535260/"> <i style="" class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/panatekdooel/">  <i style="" class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/panatek-dooel/"> <i style="" class="bi bi-linkedin"></i></a>               
+
+
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    {% if user.is_authenticated %}
+                    <form id="logout-form" action="{% url 'logout_view' %}" method="post">
+                        {% csrf_token %}
+                        <button class="auth-btn" type="submit">
+                        Одјави се
+                    </button>
+
+                    </form>
+
+                    {% else %}
+                    <button class="auth-btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Најави се
+                    </button>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'images/brands/logo.png' %}" class="logo">
+            </a>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="login-form" action="{% url 'index' %}" method="post">
+                <div class="modal-body">
+                    <p style="    margin-left: 5px;">Ние никогаш нема да ги споделиме вашите податоци.</p>
+                    {% csrf_token %}
+                    <input name="us" type="text" class="form-control mb-2" placeholder="Корисничко име">
+                    <input name='pw' type="password" class="form-control mb-2" placeholder="Лозинка" id="myInput">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-sm" style="    background: #a61a31;
+    border: 0px;">Најави се</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
